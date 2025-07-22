@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+    <title>Makale Sistemi</title>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/aa.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+    <span th:text="${error}" class="error"></span>
+    <span th:text="${success}" class="success"></span>
+
+
+    
+    <form action="/makalesistemi" method="post" enctype="multipart/form-data">
+    <label for="e-posta">E-Posta:</label>
+    <input type="email" id="e-posta" name="e-posta" required>
+
+    <label for="pdf">Makale:</label>
+    <input type="file" id="pdf" name="pdf" accept="application/pdf" required>
+    <button type="submit">Gönder</button>
+    </form>
+    
+    
+    <form action="/bulmakale" method="get">
+    
+    
+    <label for="makaleId">Makale numaranızı giriniz:</label>
+    <input type="text" id="makaleId" name="id" required>
+    
+    <label for="email">E-Posta:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <button type="submit">Gönder</button>
+    </form>
+
+</div>
+
+</body>
+</html>

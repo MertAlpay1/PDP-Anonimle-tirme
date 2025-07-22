@@ -1,0 +1,56 @@
+
+<html>
+    <head>
+    <title>Makale İşlemleri</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="/css/show.css">
+
+</head>
+<body>
+    <h1>Yönetici Makale Menüsü</h1>
+    
+<div>
+    
+    <span th:text="${error}" class="error"></span>
+    <span th:text="${success}" class="success"></span>
+    
+
+    <p><strong>Makale ID:</strong> <span th:text="${makale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${makale.Email}"></span></p>
+
+        <form th:action="@{/indir/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Makale PDF'ini İndir</button>
+        </form>
+</div>
+<div>
+     <form th:action="@{/adminmesajmenu/{id}(id=${makale.id})}"method="get">
+        <button type="submit">Yazara Mesaj Gönder</button>
+    </form>
+    <form th:action="@{/adminlog/{id}(id=${makale.id})}"method="get">
+        <button type="submit">Makalenin Log Kaydını Gör</button>
+    </form>
+    
+</div>
+
+<div>
+    
+    <form th:action="@{/alanatama/{id}(id=${makale.id})}" method="post">
+            <button type="submit">Makaleye alan ataması yap</button>
+    </form>
+    
+    <form th:action="@{/AnonimlestirmeMenu/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Makale Anonimleştirme Menüsüne Git</button>
+    </form>
+    <form th:action="@{/findpdfinterest/{id}(id=${makale.id})}" method="get">
+                <button type="submit">Makaleyi Hakemlere İlet</button>
+    </form>
+    <form th:action="@{/geribildirimMenu/{id}(id=${makale.id})}" method="get">
+                <button type="submit">Makaleyi Yazara İletme </button>
+    </form>
+    
+</div>
+
+
+</body>
+</html>

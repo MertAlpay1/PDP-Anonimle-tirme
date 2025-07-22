@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="/css/show.css">
+
+    
+    <title>Makale Durum Sorgulama</title>
+</head>
+<body>
+    <h1>Makale Durum Sorgulama</h1>
+
+     <span th:if="${error}" th:text="${error}" class="error"></span>
+     <span th:if="${success}" th:text="${success}" class="success"></span>
+
+    
+    
+    <div>
+       
+        
+        <p><strong>Makale ID:</strong> <span th:text="${pdf.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${pdf.email}"></span></p>
+
+        <form th:action="@{/indir/{id}(id=${pdf.id})}" method="get">
+            <button type="submit">Makale PDF'ini İndir</button>
+        </form>
+    </div>
+   <div>
+    <form th:action="@{/makaledüzenle/{id}(id=${pdf.id})}" method="post" enctype="multipart/form-data">
+        <input type="file" name="pdf" accept="application/pdf" required />
+        <button type="submit">Makaleyi Düzenle</button>
+    </form>
+   </div>
+
+
+    <div>
+       <form th:action="@{/usermesajmenu/{id}(id=${pdf.id})}"method="get">
+           <button type="submit">Editöre Mesaj Gönder</button>
+       </form>
+    </div>
+
+<div>
+    
+    <div th:if="${finalmakale != null}">
+        <p><strong>Makale ID:</strong> <span th:text="${finalmakale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${finalmakale.pdf.Email}"></span></p>
+
+        <form th:action="@{/indirgeribildirim/{id}(id=${finalmakale.id})}" method="get">
+            <button type="submit">Anonim Makale Geri Bildirimi İndir</button>
+        </form>
+    </div>
+    
+    
+</div>
+
+
+
+</body>
+</html>

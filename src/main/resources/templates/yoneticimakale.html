@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Makale Yönetimi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="/css/table.css">
+
+</head>
+<body>
+    <h2>Makale Listesi</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Makale ID</th>
+                <th>Email</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="makale : ${makaleler}">
+                <td th:text="${makale.id}"></td>
+                <td th:text="${makale.Email}"></td>
+                <td>
+                    <form th:action="@{/makale/goruntule/{id}(id=${makale.id})}" method="get">
+                        <button type="submit" class="sec-button">Seç</button>
+                    </form> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

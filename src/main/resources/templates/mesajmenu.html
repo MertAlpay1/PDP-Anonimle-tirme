@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mesaj Menüsü</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/message.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Mevcut Mesajlar:</h3>
+    <ul>
+        <li th:each="message : ${mesaj}">
+            <strong th:text="${message.sender}"></strong>: 
+            <span th:text="${message.text}"></span> 
+        </li>
+    </ul>
+</div>
+<div>
+    <h3>Yeni Mesaj Gönder</h3>
+    <form th:if="${user} == 'yazar'" th:action="@{/usermesajgönder/{id}(id=${pdf})}" method="post">
+        <input type="hidden" name="sender" th:value="${user}" />
+        <textarea name="text" placeholder="Mesajınız" required></textarea>
+        <button type="submit">Gönder</button>
+    </form>
+    <form th:if="${user} == 'editör'" th:action="@{/adminmesajgönder/{id}(id=${pdf})}" method="post">
+        <input type="hidden" name="sender" th:value="${user}" />
+        <textarea name="text" placeholder="Mesajınız" required></textarea>
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+<div>
+    <a th:if="${user} == 'yazar'" th:href="@{/makaledurumsorgulama/{id}(id=${pdf})}" class="back-btn">Geri Dön</a>
+    <a th:if="${user} == 'editör'" th:href="@{/makale/goruntule/{id}(id=${pdf})}" class="back-btn">Geri Dön</a>
+</div>
+
+</body>
+</html>

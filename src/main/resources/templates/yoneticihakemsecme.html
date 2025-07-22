@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Hakem Seçme</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+    <h2>Hakem Seçimi</h2>
+        <span th:text="${error}" class="error"></span>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Hakem Adı</th>
+                <th>Seç</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="reviewer : ${reviewers}">
+                <td th:text="${reviewer.name}"></td>
+                <td>
+                     <form th:action="@{/sendpdftoreviewer/{id}(id=${reviewer.id})}" method="post">
+                        <input type="hidden" th:value="${pdf.id}" name="pdfId" />
+                        <button type="submit" class="sec-button">Seç</button>
+                    </form> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

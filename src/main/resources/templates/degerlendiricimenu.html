@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Hakem Menü</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/select.css">
+
+    
+</head>
+<body>
+    <h1>Hakem Değerlendirme Paneli</h1>
+    
+    <div>
+        <p><strong>Makale ID:</strong> <span th:text="${makale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${makale.email}"></span></p>
+
+        <form th:action="@{/indiranonim/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Makale PDF'ini İndir</button>
+        </form>  
+    </div>   
+    
+<div th:each="yorum : ${yorumlar}" class="yorum-container">
+    <p>
+        <span th:text="${yorum.reviewer.name}"></span> :
+        <span th:text="${yorum.review}"></span>
+    </p>
+</div>
+
+    
+    <div>
+        <h2>Yorum Ekle</h2>
+        <form th:action="@{/yorumekle/{id}(id=${makale.id})}" method="post">  
+            <label for="yorum">Yorumunuz(Lütfen sadece Latin alfabesi ve boşluk kullanın):</label>
+            <textarea id="yorum" name="yorum" required></textarea>
+            <input type="hidden" th:value="${hakem.id}" name="hakemId" />
+            <button type="submit">Yorumu Gönder</button>
+        </form>
+    </div>
+</body>
+</html>

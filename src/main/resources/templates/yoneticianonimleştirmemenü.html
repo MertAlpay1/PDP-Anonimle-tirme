@@ -1,0 +1,72 @@
+
+<html>
+    <head>
+    <title>Anonimleştirme Menü</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="/css/select.css">
+
+</head>
+<body>
+    
+<div>
+    <h1>Makale Anonimleştirme Menüsü</h1>
+    
+    <span th:text="${error}" class="error"></span>
+    <span th:text="${success}" class="success"></span>
+    
+    <p><strong>Makale ID:</strong> <span th:text="${makale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${makale.Email}"></span></p>
+
+        <div th:if="${apdfExists}">
+        <form th:action="@{/indiranonim/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Makale PDF'ini İndir</button>
+        </form>
+    </div>
+    
+    <div th:if="${!apdfExists}">
+        <p>Anonim PDF bulunmamaktadır.</p>
+        <button disabled>Makale PDF'ini İndir</button>
+    </div>
+    
+    
+</div>
+    
+    
+
+<div>
+    
+    
+    
+    <form th:action="@{/Anonimleştirme/{id}(id=${makale.id})}" method="post">
+        <label for="AdAnonim">Yazar Adı:</label>
+        <select id="AdAnonim" name="AdAnonim">
+            <option value="true">Anonimleştir</option>
+            <option value="false">Koru</option>
+        </select>
+
+        <label for="IletisimAnonim">Yazar İletişim:</label>
+        <select id="IletisimAnonim" name="IletisimAnonim">
+            <option value="true">Anonimleştir</option>
+            <option value="false">Koru</option>
+        </select>
+
+        <label for="KurumAnonim">Yazar Kurumu:</label>
+        <select id="KurumAnonim" name="KurumAnonim">
+            <option value="true">Anonimleştir</option>
+            <option value="false">Koru</option>
+        </select>
+        
+        <label for="ResimAnonim">Yazar Resim:</label>
+        <select id="ResimAnonim" name="ResimAnonim">
+            <option value="true">Anonimleştir</option>
+            <option value="false">Koru</option>
+        </select>
+
+        <button type="submit">Makaleyi anonimleştir</button>
+    </form>
+    
+</div>
+
+</body>
+</html>

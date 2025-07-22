@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dae1e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+div {
+    background-color: white;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+
+form {
+    margin-top: 15px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h1 {
+    color: black;
+    padding: 5px;
+    margin: 5px;
+}
+
+p {
+    color: red;
+    padding: 4px;
+    margin: 3px;
+}
+
+
+
+span.error {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+
+span.success {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: greenyellow;
+}

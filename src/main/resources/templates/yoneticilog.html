@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Yönetici Logları</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+    <h1>Yönetici Logları</h1>
+    
+    <div th:if="${logs != null}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Log ID</th>
+                    <th>Makale ID</th>
+                    <th>Log Texti</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="log : ${logs}">
+                    <td th:text="${log.id}"></td>
+                    <td th:text="${log.pdf.id}"></td>
+                    <td th:text="${log.text}"></td>
+                    <td th:text="${log.date}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

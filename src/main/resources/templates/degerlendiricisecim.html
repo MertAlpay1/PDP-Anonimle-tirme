@@ -1,0 +1,40 @@
+
+<html>
+    <head>
+    <title>Hakem Makale Secim</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/table.css"> 
+
+</head>
+<body>
+<div>
+    
+    <span th:text="${error}" class="error"></span>
+    <span th:text="${success}" class="success"></span>
+
+<table>
+        <thead>
+            <tr>
+                <th>Makale ID</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="makale : ${makale}">
+                <td th:text="${makale.id}"></td>
+                <td>
+                    <form th:action="@{/selectrpdf/{id}(id=${makale.id})}" method="get">
+                        <input type="hidden" th:value="${hakem.id}" name="hakemId" />
+                        <button type="submit" class="sec-button">Seç</button>
+                    </form> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+</body>
+</html>

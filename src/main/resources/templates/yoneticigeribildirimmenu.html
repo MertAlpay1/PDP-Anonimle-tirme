@@ -1,0 +1,43 @@
+<html>
+    <head>
+    <title>Yönetici Geribildirim Menüsü</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/show.css">
+</head>
+<body>
+    
+<div th:if="${error != null}">
+        <p th:text="${error}"></p>
+    </div>
+
+    <div th:if="${makale != null}">
+        <p><strong>Makale ID:</strong> <span th:text="${makale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${makale.pdf.Email}"></span></p>
+
+        <form th:action="@{/indiranonimgeribildirim/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Anonim Makale Geri Bildirimi İndir</button>
+        </form>
+    </div>
+
+ <div th:if="${makale != null}">
+    
+    <form th:action="@{/geribildirimanonimkaldır/{id}(id=${makale.id})}" method="Post">
+                <button type="submit">Makalenin Anonimliğini Kaldır ve Yazara İlet</button>
+    </form>
+    
+    
+</div>
+
+
+    <div th:if="${finalmakale != null}">
+        <p><strong>Makale ID:</strong> <span th:text="${finalmakale.id}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${finalmakale.pdf.Email}"></span></p>
+
+        <form th:action="@{/indirgeribildirim/{id}(id=${makale.id})}" method="get">
+            <button type="submit">Anonim Makale Geri Bildirimi İndir</button>
+        </form>
+    </div>
+
+</body>
+</html>
